@@ -83,20 +83,32 @@ namespace ATMsimulator
             command.ExecuteNonQuery();
 
             MessageBox.Show($"PIN {PIN}\nCard number {cardNumber}");
-            /*
+            
             string requestIdCard = $"SELECT [id_cc] FROM ClientCard WHERE PIN = {PIN}";
             OleDbCommand commandIdCard = new OleDbCommand(requestIdCard, connection);
 
             var _idCard = commandIdCard.ExecuteScalar().ToString();
             int idCard = Convert.ToInt32(_idCard);
-            string operation = "Bank card created";
+
+            string operation = "BankCardCreated";
             string date = "dfg";
             
             string mySecondRequest = "INSERT INTO OperationsHistory (operation, date, " +
-                "[id_card]) VALUES ('" + operation + "', '" + date + "', " + 2 + ")";
+                "[id_card]) VALUES ('" + operation + "', '" + date + "', " + idCard + ")";
             OleDbCommand _command = new OleDbCommand(mySecondRequest, connection);
-            _command.ExecuteNonQuery();
-            */
+            string strFeedback = "";
+            try
+            {
+                strFeedback = _command.ExecuteNonQuery().ToString() + " record has been added successfully!";
+            }
+            catch (Exception ex)
+            {
+
+                strFeedback = "ERROR: " + ex.Message;
+            }
+
+            //_command.ExecuteNonQuery();
+            
             //MessageBox.Show("OK");
         }
     }
