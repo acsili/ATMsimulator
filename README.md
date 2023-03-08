@@ -8,6 +8,8 @@
 * ### view the balance
 
 ### Main window
-<img src="https://github.com/IlyaOvchinnikov-0/ATMsimulator/blob/main/ATMsimulator/Pictures/MainWindow.png" width="200" />
+<img src="https://github.com/IlyaOvchinnikov-0/ATMsimulator/blob/main/ATMsimulator/Pictures/MainWindow.png" width="400" />
+### LogIn
+<img src="https://github.com/IlyaOvchinnikov-0/ATMsimulator/blob/main/ATMsimulator/Pictures/LogInWindow.png" width="400" />
 
 ### Another frontend in the "Pictures" folder
