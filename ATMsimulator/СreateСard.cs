@@ -84,7 +84,7 @@ namespace ATMsimulator
 
             MessageBox.Show($"PIN {PIN}\nCard number {cardNumber}");
             
-            string requestIdCard = $"SELECT [id_cc] FROM ClientCard WHERE PIN = {PIN}";
+            /*string requestIdCard = $"SELECT [id_cc] FROM ClientCard WHERE PIN = {PIN}";
             OleDbCommand commandIdCard = new OleDbCommand(requestIdCard, connection);
 
             var _idCard = commandIdCard.ExecuteScalar().ToString();
@@ -106,7 +106,7 @@ namespace ATMsimulator
 
                 strFeedback = "ERROR: " + ex.Message;
             }
-
+*/
             //_command.ExecuteNonQuery();
             
             //MessageBox.Show("OK");
