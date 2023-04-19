@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATMsimulator.DataBaseConnection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,27 +14,25 @@ namespace ATMsimulator
 {
     public partial class GetCash : Form
     {
-        public static string connectString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"D:\\C Projs\\ATMsimulator\\ATMsimulator\\СlientСardDB.mdb\"";
-        private OleDbConnection connection;
+        DBConnection dBConnection = new DBConnection();
         public GetCash()
         {
             InitializeComponent();
-            connection = new OleDbConnection(connectString);
-            connection.Open();
+            dBConnection.OpenConnection();
         }
         private void GetCash_FormClosing(object sender, FormClosingEventArgs e)
         {
-            connection.Close();
+            dBConnection.CloseConnection();
         }
         private void buttonGetEnterCash_Click(object sender, EventArgs e)
         {
             string requestPastBalance = $"SELECT [balance] FROM ClientCard WHERE PIN = '{LogIn.PIN}'";
-            OleDbCommand commandPastBalance = new OleDbCommand(requestPastBalance, connection);
+            OleDbCommand commandPastBalance = new OleDbCommand(requestPastBalance, dBConnection.connection);
             string pastBalance = commandPastBalance.ExecuteScalar().ToString();
 
             double balance = Convert.ToDouble(pastBalance) - Convert.ToDouble(textBoxGetCash.Text);
             string requestNewBalance = $"UPDATE ClientCard SET [balance] = {balance} WHERE PIN = '{LogIn.PIN}'";
-            OleDbCommand commandCardNumber = new OleDbCommand(requestNewBalance, connection);
+            OleDbCommand commandCardNumber = new OleDbCommand(requestNewBalance, dBConnection.connection);
             commandCardNumber.ExecuteNonQuery();
             MessageBox.Show($"{textBoxGetCash.Text} geted successfully\nBalance: {balance}");
         }

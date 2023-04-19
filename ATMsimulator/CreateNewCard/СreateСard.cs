@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATMsimulator.DataBaseConnection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,22 +19,21 @@ namespace ATMsimulator
     
     public partial class СreateСard : Form
     {
-        public static string connectString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"D:\\C Projs\\ATMsimulator\\ATMsimulator\\СlientСardDB.mdb\"";
-        private OleDbConnection connection;
+
+        DBConnection dBConnection = new DBConnection();
 
         public СreateСard()
         {
             InitializeComponent();
-            connection = new OleDbConnection(connectString);
-            connection.Open();
+            dBConnection.OpenConnection();
         }
 
         private void СreateСard_FormClosing(object sender, FormClosingEventArgs e)
         {
-            connection.Close();
+            dBConnection.CloseConnection();
         }
 
-        private string generateCardNumber()
+        private string GenerateCardNumber()
         {
             string cardNumber = "";
             
@@ -54,7 +54,7 @@ namespace ATMsimulator
             return cardNumber;
         }
 
-        private string generatePIN()
+        private string GeneratePIN()
         {
             string PIN = "";
             
@@ -70,16 +70,16 @@ namespace ATMsimulator
 
         private void buttonCraeteCard_Click(object sender, EventArgs e)
         {
-            string PIN = generatePIN();
+            string PIN = GeneratePIN();
             string name = textBoxName.Text;
             string surname = textBoxSurname.Text;
-            string cardNumber = generateCardNumber();
+            string cardNumber = GenerateCardNumber();
             double balance = 0.0;
             
             string myFirstRequest = "INSERT INTO ClientCard (client_name, client_surname, " +
                 "card_number, [balance], PIN) VALUES ('" + name + "', '" + surname + "', " +
                 "'" + cardNumber + "', " + balance + ", '" + PIN + "')";
-            OleDbCommand command = new OleDbCommand(myFirstRequest, connection);
+            OleDbCommand command = new OleDbCommand(myFirstRequest, dBConnection.connection);
             command.ExecuteNonQuery();
 
             MessageBox.Show($"PIN {PIN}\nCard number {cardNumber}");

@@ -8,37 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using ATMsimulator.DataBaseConnection;
+using System.Data.Common;
 
 namespace ATMsimulator
 {
     public partial class Main : Form
     {
-        public static string connectString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"D:\\C Projs\\ATMsimulator\\ATMsimulator\\СlientСardDB.mdb\"";
-        private OleDbConnection connection;
+        DBConnection dBConnection = new DBConnection();
         public Main()
         {
             InitializeComponent();
-            connection = new OleDbConnection(connectString);
-            connection.Open();
+            dBConnection.OpenConnection();
             labelNameSurname.Text = $"{LogIn.name} {LogIn.surname}";
             labelCardNumber.Text = LogIn.cardNumber;
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            connection.Close();
+            dBConnection.CloseConnection();
         }
 
         private void buttonEndSession_Click(object sender, EventArgs e)
         {
-            connection.Close();
+            dBConnection.CloseConnection();
             this.Close();
         }
 
         private void buttonBalance_Click(object sender, EventArgs e)
         {
             string requestBalance = $"SELECT balance FROM ClientCard WHERE PIN = '{LogIn.PIN}'";
-            OleDbCommand commandBalance = new OleDbCommand(requestBalance, connection);
+            OleDbCommand commandBalance = new OleDbCommand(requestBalance, dBConnection.connection);
             MessageBox.Show($"{commandBalance.ExecuteScalar().ToString()}");
         }
 

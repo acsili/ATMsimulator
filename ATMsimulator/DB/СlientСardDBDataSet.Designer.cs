@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace ATMsimulator {
+namespace ATMsimulator.DB {
     
     
     /// <summary>
@@ -1324,7 +1324,7 @@ namespace ATMsimulator {
         }
     }
 }
-namespace ATMsimulator.СlientСardDBDataSetTableAdapters {
+namespace ATMsimulator.DB.СlientСardDBDataSetTableAdapters {
     
     
     /// <summary>

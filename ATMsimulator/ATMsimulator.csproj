@@ -86,22 +86,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DepositCash.cs">
+    <Compile Include="CashActions\DepositCash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DepositCash.Designer.cs">
+    <Compile Include="CashActions\DepositCash.Designer.cs">
       <DependentUpon>DepositCash.cs</DependentUpon>
     </Compile>
-    <Compile Include="GetCash.cs">
+    <Compile Include="CashActions\GetCash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GetCash.Designer.cs">
+    <Compile Include="CashActions\GetCash.Designer.cs">
       <DependentUpon>GetCash.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogIn.cs">
+    <Compile Include="DataBaseConnection\DBConnection.cs" />
+    <Compile Include="UserLogIn\LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogIn.Designer.cs">
+    <Compile Include="UserLogIn\LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
@@ -112,24 +113,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="СlientСardDBDataSet.Designer.cs">
+    <Compile Include="DB\СlientСardDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>СlientСardDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="СreateСard.cs">
+    <Compile Include="CreateNewCard\СreateСard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="СreateСard.Designer.cs">
+    <Compile Include="CreateNewCard\СreateСard.Designer.cs">
       <DependentUpon>СreateСard.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DepositCash.resx">
+    <EmbeddedResource Include="CashActions\DepositCash.resx">
       <DependentUpon>DepositCash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GetCash.resx">
+    <EmbeddedResource Include="CashActions\GetCash.resx">
       <DependentUpon>GetCash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogIn.resx">
+    <EmbeddedResource Include="UserLogIn\LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
@@ -144,7 +145,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="СreateСard.resx">
+    <EmbeddedResource Include="CreateNewCard\СreateСard.resx">
       <DependentUpon>СreateСard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -156,15 +157,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="СlientСardDBDataSet.xsc">
+    <None Include="DB\СlientСardDBDataSet.xsc">
       <DependentUpon>СlientСardDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="СlientСardDBDataSet.xsd">
+    <None Include="DB\СlientСardDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>СlientСardDBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="СlientСardDBDataSet.xss">
+    <None Include="DB\СlientСardDBDataSet.xss">
       <DependentUpon>СlientСardDBDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
