@@ -1,4 +1,4 @@
-## Project ATM Machine simulator(abandoned project)
+## Project ATM Machine simulator
 
 ### Implemented functions: 
 * ### create a card 
